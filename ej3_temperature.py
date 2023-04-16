@@ -46,7 +46,7 @@ def media (suma_total, num):
     return suma_total/num
 
   
-def main(broker):
+def main(hostname):
     keys = ["_t1", "_t2", ""]
     data = dict()
     for key in keys:
@@ -62,10 +62,10 @@ def main(broker):
     mqttc.on_subscribe = on_subscribe
     mqttc.on_log = on_log
 
-    print(f'Connecting on channels numbers on {broker}')
-    mqttc.connect(broker)
     
-    mqttc.subscribe('temperature/#')
+    mqttc.connect(hostname)
+    
+    mqttc.subscribe('temperature')
 
     mqttc.loop_start()
     t_0 = time.time()
@@ -90,5 +90,5 @@ if __name__ == "__main__":
     import sys
     if len(sys.argv)<2:
         print(f"Usage: {sys.argv[0]} broker")
-    broker = sys.argv[1]
-    main(broker)
+    hostname = sys.argv[1]
+    main(hostname)
