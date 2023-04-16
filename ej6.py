@@ -45,7 +45,7 @@ def on_subscribe(mqttc, userdata, mid, granted_qos):
 def total():
     for data in total_data:
         minimum, maximum, average = sats(total_data[data])
-        print(f"Subtopic: {data}, Min: {minimum}, Max: {maximum}, Media: {average}")
+        print(f"data: {data}, Min: {minimum}, Max: {maximum}, Media: {average}")
     minimum, maximum, average = sats(messages)
     print(f"Recuento , Min: {minimum}, Max: {maximum}, Media: {average}")
     
